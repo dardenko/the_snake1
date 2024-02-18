@@ -9,6 +9,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
+GR_HW = GRID_HEIGHT * GRID_WIDTH
 
 # Направления движения:
 UP = (0, -1)
@@ -167,9 +168,8 @@ def main():
         handle_keys(snake)
         snake.update_direction()
 
-        head = snake.get_head_position()        
-        if (head in snake.positions[1:]
-                or snake.length == GRID_WIDTH * GRID_HEIGHT):
+        head = snake.get_head_position()
+        if head in snake.positions[1:] or snake.length == GR_HW:
             snake.reset()
             screen.fill(BOARD_BACKGROUND_COLOR)
 
@@ -177,7 +177,6 @@ def main():
             snake.length += 1
             apple.randomize_position()
 
-        # Переместите вызов метода move() после обновления направления
         snake.move()
 
         screen.fill(BOARD_BACKGROUND_COLOR)
