@@ -1,6 +1,6 @@
 from random import choice, randint
 import pygame
-
+from sys import exit
 # Инициализация PyGame:
 pygame.init()
 
@@ -52,7 +52,7 @@ class GameObject:
 
     def draw(self, surface):
         """Отрисовка объекта на экране."""
-        pass
+        raise NotImplementedError()
 
 
 class Apple(GameObject):
@@ -188,8 +188,8 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                raise SystemExit
+                pygame.quit
+                raise exit()
 
 
 if __name__ == '__main__':
